@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(savedInstanceState == null)
         {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new FragmentEmail()).commit();
+                    new FragmentWelcome()).commit();
 
             navi.setCheckedItem(R.id.i_bc_art);
         }
@@ -60,35 +60,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()){
             case R.id.i_bc_scifi:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new FragmentEmail()).commit();
+                        new FragmentCategory()).commit();
                 break;
             case R.id.i_bc_sports:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new FragmentEmail()).commit();
+                        new FragmentCategory()).commit();
                 break;
 
             case R.id.i_bc_englishlit:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new FragmentEmail()).commit();
+                        new FragmentCategory()).commit();
                 break;
 
             case R.id.i_bc_art:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new FragmentEmail()).commit();
+                        new FragmentCategory()).commit();
                 break;
 
             case R.id.i_bc_comics:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new FragmentEmail()).commit();
+                        new FragmentCategory()).commit();
                 break;
             case R.id.i_bc_help:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new FragmentEmail()).commit();
+                        new FragmentCategory()).commit();
                 break;
 
             case R.id.i_map:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new FragmentEmail()).commit();
+                        new FragmentMaps()).commit();
                 break;
             case R.id.i_email:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
