@@ -17,6 +17,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
+    private BookDBMS bookDB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        bookDB = new BookDBMS(this);
+
         if(savedInstanceState == null)
         {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             navi.setCheckedItem(R.id.i_bc_art);
         }
+
+
 
     }
 
