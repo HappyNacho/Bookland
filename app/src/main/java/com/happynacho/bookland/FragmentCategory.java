@@ -71,9 +71,9 @@ public class FragmentCategory extends Fragment {
                 JSONArray jsonArray = json.getJSONArray(i);
 
                 Book book = new Book();
-                book.setTitle(jsonArray.getJSONObject(0).getString("id_book"));
-                book.setAuthor(jsonArray.getJSONObject(0).getString("name"));
-                book.setCategory(jsonArray.getJSONObject(0).getString("brand"));
+                book.setTitle(jsonArray.getJSONObject(0).getString("title"));
+                book.setAuthor(jsonArray.getJSONObject(0).getString("author"));
+                book.setCategory(jsonArray.getJSONObject(0).getString("category"));
                 book.setEditorial(jsonArray.getJSONObject(0).getString("editorial"));
                 book.setDescription(jsonArray.getJSONObject(0).getString("description"));
                 book.setPrice(jsonArray.getJSONObject(0).getString("price"));
