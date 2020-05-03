@@ -32,7 +32,7 @@ public class BookDBMS extends SQLiteOpenHelper {
 
         db.execSQL("drop table if exists "+ TABLE);
         String query = "CREATE TABLE " + TABLE + "(" +
-                FIELD_ID_BOOK + " INT PRIMARY KEY, " +
+                FIELD_ID_BOOK + " TEXT PRIMARY KEY, " +
                 FIELD_TITLE + " TEXT NOT NULL, " +
                 FIELD_AUTHOR + " TEXT NOT NULL, " +
                 FIELD_CATEGORY + " TEXT NOT NULL, " +
