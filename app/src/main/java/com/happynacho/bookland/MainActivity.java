@@ -24,6 +24,8 @@ import com.google.android.material.navigation.NavigationView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 //import android.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -58,7 +60,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         RequestQueue queue = Volley.newRequestQueue(this);
 
         final String url ="http://androidstorepddm.000webhostapp.com/services/getbooks.php?category=scifi";
-        Log.e(null,url);
 // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -83,7 +84,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 String description = jsonObject.getString("description");
                                 String price = jsonObject.getString("price");
                                 String url_picture = jsonObject.getString("url_picture");
+                                Log.e(null,"id: "+id_book+"\ntitle: "+title+"\nauthor: "+author+"\ncategory: "+category+"\neditorial: "+editorial+"\ndescription: "+description+"\nprice: "+price+"\nurl_picture: "+url_picture);
                                 Book book = new Book(id_book,title,author,category,editorial,description,price,url_picture);
+                                bookDB.insertBook(book);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -100,7 +103,222 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 // Add the request to the RequestQueue.
         queue.add(stringRequest);
+        final String url2 ="http://androidstorepddm.000webhostapp.com/services/getbooks.php?category=english";
+// Request a string response from the provided URL.
+        StringRequest stringRequest2 = new StringRequest(Request.Method.GET, url2,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        JSONArray jsonArray = null;
+                        JSONObject jsonObject = null;
+                        try {
+                            jsonArray = new JSONArray(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        for(int i = 0; i < jsonArray.length();i++){
+                            try {
+                                jsonObject = jsonArray.getJSONArray(i).getJSONObject(0);
+                                String id_book = jsonObject.getString("id_book");
+                                String title = jsonObject.getString("title");
+                                String author = jsonObject.getString("author");
+                                String category = jsonObject.getString("category");
+                                String editorial = jsonObject.getString("editorial");
+                                String description = jsonObject.getString("description");
+                                String price = jsonObject.getString("price");
+                                String url_picture = jsonObject.getString("url_picture");
+                                Log.e(null,"id: "+id_book+"\ntitle: "+title+"\nauthor: "+author+"\ncategory: "+category+"\neditorial: "+editorial+"\ndescription: "+description+"\nprice: "+price+"\nurl_picture: "+url_picture);
+                                Book book = new Book(id_book,title,author,category,editorial,description,price,url_picture);
+                                bookDB.insertBook(book);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
 
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(null,"That didn't work!");
+
+            }
+        });
+
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest2);
+        final String url3 ="http://androidstorepddm.000webhostapp.com/services/getbooks.php?category=comics";
+// Request a string response from the provided URL.
+        StringRequest stringRequest3 = new StringRequest(Request.Method.GET, url3,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        JSONArray jsonArray = null;
+                        JSONObject jsonObject = null;
+                        try {
+                            jsonArray = new JSONArray(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        for(int i = 0; i < jsonArray.length();i++){
+                            try {
+                                jsonObject = jsonArray.getJSONArray(i).getJSONObject(0);
+                                String id_book = jsonObject.getString("id_book");
+                                String title = jsonObject.getString("title");
+                                String author = jsonObject.getString("author");
+                                String category = jsonObject.getString("category");
+                                String editorial = jsonObject.getString("editorial");
+                                String description = jsonObject.getString("description");
+                                String price = jsonObject.getString("price");
+                                String url_picture = jsonObject.getString("url_picture");
+                                Log.e(null,"id: "+id_book+"\ntitle: "+title+"\nauthor: "+author+"\ncategory: "+category+"\neditorial: "+editorial+"\ndescription: "+description+"\nprice: "+price+"\nurl_picture: "+url_picture);
+                                Book book = new Book(id_book,title,author,category,editorial,description,price,url_picture);
+                                bookDB.insertBook(book);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(null,"That didn't work!");
+
+            }
+        });
+
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest3);
+        final String url4 ="http://androidstorepddm.000webhostapp.com/services/getbooks.php?category=art";
+// Request a string response from the provided URL.
+        StringRequest stringRequest4 = new StringRequest(Request.Method.GET, url4,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        JSONArray jsonArray = null;
+                        JSONObject jsonObject = null;
+                        try {
+                            jsonArray = new JSONArray(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        for(int i = 0; i < jsonArray.length();i++){
+                            try {
+                                jsonObject = jsonArray.getJSONArray(i).getJSONObject(0);
+                                String id_book = jsonObject.getString("id_book");
+                                String title = jsonObject.getString("title");
+                                String author = jsonObject.getString("author");
+                                String category = jsonObject.getString("category");
+                                String editorial = jsonObject.getString("editorial");
+                                String description = jsonObject.getString("description");
+                                String price = jsonObject.getString("price");
+                                String url_picture = jsonObject.getString("url_picture");
+                                Log.e(null,"id: "+id_book+"\ntitle: "+title+"\nauthor: "+author+"\ncategory: "+category+"\neditorial: "+editorial+"\ndescription: "+description+"\nprice: "+price+"\nurl_picture: "+url_picture);
+                                Book book = new Book(id_book,title,author,category,editorial,description,price,url_picture);
+                                bookDB.insertBook(book);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(null,"That didn't work!");
+
+            }
+        });
+// Add the request to the RequestQueue.
+        queue.add(stringRequest4);
+        final String url5 ="http://androidstorepddm.000webhostapp.com/services/getbooks.php?category=self";
+// Request a string response from the provided URL.
+        StringRequest stringRequest5 = new StringRequest(Request.Method.GET, url5,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        JSONArray jsonArray = null;
+                        JSONObject jsonObject = null;
+                        try {
+                            jsonArray = new JSONArray(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        for(int i = 0; i < jsonArray.length();i++){
+                            try {
+                                jsonObject = jsonArray.getJSONArray(i).getJSONObject(0);
+                                String id_book = jsonObject.getString("id_book");
+                                String title = jsonObject.getString("title");
+                                String author = jsonObject.getString("author");
+                                String category = jsonObject.getString("category");
+                                String editorial = jsonObject.getString("editorial");
+                                String description = jsonObject.getString("description");
+                                String price = jsonObject.getString("price");
+                                String url_picture = jsonObject.getString("url_picture");
+                                Log.e(null,"id: "+id_book+"\ntitle: "+title+"\nauthor: "+author+"\ncategory: "+category+"\neditorial: "+editorial+"\ndescription: "+description+"\nprice: "+price+"\nurl_picture: "+url_picture);
+                                Book book = new Book(id_book,title,author,category,editorial,description,price,url_picture);
+                                bookDB.insertBook(book);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(null,"That didn't work!");
+
+            }
+        });
+// Add the request to the RequestQueue.
+        queue.add(stringRequest5);
+        final String url6 ="http://androidstorepddm.000webhostapp.com/services/getbooks.php?category=sports";
+// Request a string response from the provided URL.
+        StringRequest stringRequest6 = new StringRequest(Request.Method.GET, url6,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        JSONArray jsonArray = null;
+                        JSONObject jsonObject = null;
+                        try {
+                            jsonArray = new JSONArray(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        for(int i = 0; i < jsonArray.length();i++){
+                            try {
+                                jsonObject = jsonArray.getJSONArray(i).getJSONObject(0);
+                                String id_book = jsonObject.getString("id_book");
+                                String title = jsonObject.getString("title");
+                                String author = jsonObject.getString("author");
+                                String category = jsonObject.getString("category");
+                                String editorial = jsonObject.getString("editorial");
+                                String description = jsonObject.getString("description");
+                                String price = jsonObject.getString("price");
+                                String url_picture = jsonObject.getString("url_picture");
+                                Log.e(null,"id: "+id_book+"\ntitle: "+title+"\nauthor: "+author+"\ncategory: "+category+"\neditorial: "+editorial+"\ndescription: "+description+"\nprice: "+price+"\nurl_picture: "+url_picture);
+                                Book book = new Book(id_book,title,author,category,editorial,description,price,url_picture);
+                                bookDB.insertBook(book);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(null,"That didn't work!");
+
+            }
+        });
+
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest6);
     }
 
     @Override
