@@ -17,6 +17,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
+
     private List<Book> book_list;
     private Context context;
     private RecyclerView myrecyclerview;
@@ -37,8 +38,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             super(view);
             layout = view;
             textview_title = (TextView) view.findViewById(R.id.title);
-            /*
             textview_author = (TextView) view.findViewById(R.id.author);
+            /*
             textview_category = (TextView) view.findViewById(R.id.category);
             textview_editorial = (TextView) view.findViewById(R.id.editorial);*/
             textview_price = (TextView) view.findViewById(R.id.price);

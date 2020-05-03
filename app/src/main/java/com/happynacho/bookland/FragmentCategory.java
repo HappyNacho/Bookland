@@ -45,6 +45,34 @@ public class FragmentCategory extends Fragment {
         return inflater.inflate(R.layout.frag_category, container, false);
     }
 
+    public void onCreate(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //setContentView(R.layout.frag_category);
+        book_list = new ArrayList<>();
+        recyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        manejadorLayout = new LinearLayoutManager(getActivity().getApplicationContext());
+        recyclerView.setLayoutManager(manejadorLayout);
+
+
+       /* RequestBook.getRequest(this,this);
+        Toast.makeText(getApplicationContext(),"Getting data from server. . .",Toast.LENGTH_LONG).show();
+        handler.postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+
+                try {
+                    adapter.notifyDataSetChanged();
+                } catch (Exception ignored) {
+                    ignored.printStackTrace();
+                }
+            }
+        }, 3000);
+        */
+        populateRecyclerView();
+    }
+
     private void populateRecyclerView()
     {
 

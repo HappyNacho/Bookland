@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         RequestQueue queue = Volley.newRequestQueue(this);
 
         final String url ="http://androidstorepddm.000webhostapp.com/services/getbooks.php?category=scifi";
-// Request a string response from the provided URL.
+        // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
