@@ -338,30 +338,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()){
             case R.id.i_bc_scifi:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new FragmentCategory()).commit();
+                        new FragmentCategory("scifi")).commit();
                 break;
             case R.id.i_bc_sports:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new FragmentCategory()).commit();
+                        new FragmentCategory("sports")).commit();
                 break;
 
             case R.id.i_bc_englishlit:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new FragmentCategory()).commit();
+                        new FragmentCategory("english")).commit();
                 break;
 
             case R.id.i_bc_art:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new FragmentCategory()).commit();
+                        new FragmentCategory("art")).commit();
                 break;
 
             case R.id.i_bc_comics:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new FragmentCategory()).commit();
+                        new FragmentCategory("comics")).commit();
                 break;
             case R.id.i_bc_help:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new FragmentCategory()).commit();
+                        new FragmentCategory("self")).commit();
                 break;
 
             case R.id.i_map:
@@ -376,5 +376,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return false;
     }
-
+    public BookDBMS getBookDB(){
+        return bookDB;
+    }
 }

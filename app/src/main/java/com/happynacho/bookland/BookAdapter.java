@@ -10,93 +10,65 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
+public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
 
-    private List<Book> book_list;
+    private ArrayList<Book> book_list;
     private Context context;
-    private RecyclerView myrecyclerview;
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public BookAdapter(ArrayList<Book>book_list, Context context){
+        this.book_list=book_list;
+        this.context=context;
 
-        public TextView textview_title;
-        public TextView textview_author;
-        public TextView textview_category;
-        public TextView textview_editorial;
-        public TextView textview_price;
-        public ImageView imageview_image;
-
-
-        public View layout;
-
-        public ViewHolder(View view) {
-            super(view);
-            layout = view;
-            textview_title = (TextView) view.findViewById(R.id.title);
-            textview_author = (TextView) view.findViewById(R.id.author);
-            /*
-            textview_category = (TextView) view.findViewById(R.id.category);
-            textview_editorial = (TextView) view.findViewById(R.id.editorial);*/
-            textview_price = (TextView) view.findViewById(R.id.price);
-            imageview_image = (ImageView) view.findViewById(R.id.image);
-        }
     }
 
-    public void add(int position, Book book) {
-        book_list.add(position, book);
-        notifyItemInserted(position);
-    }
 
-    public void remove(int posicion) {
-        book_list.remove(posicion);
-        notifyItemRemoved(posicion);
-    }
+    @Override
+    public BookViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-    public BookAdapter(List<Book> data, Context context, RecyclerView recyclerView) {
-        book_list = data;
-        this.context = context;
-        myrecyclerview = recyclerView;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_userlayout,null,false);
+        return new BookViewHolder(view);
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent,
-                                         int viewType) {
+    public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
+        holder.title.setText("Title: "+book_list.get(position).getTitle());
+        holder.author.setText("Author: "+book_list.get(position).getAuthor());
+        holder.category.setText("Category: "+book_list.get(position).getCategory());
+        holder.editorial.setText("Editorial: "+book_list.get(position).getEditorial());
+        holder.description.setText("Description: "+book_list.get(position).getDescription());
+        holder.price.setText("Price: "+book_list.get(position).getPrice());
+        Picasso.with(context).load(book_list.get(position).getUrl_image()).placeholder(R.mipmap.ic_launcher_round).into(holder.image);
 
-        LayoutInflater inflater = LayoutInflater.from(
-                parent.getContext());
-        View vista =
-                inflater.inflate(R.layout.single_row, parent, false);
 
-        ViewHolder view_holder = new ViewHolder(vista);
-        return view_holder;
     }
 
-    @Override
-    public void onBindViewHolder(ViewHolder manager, final int position) {
 
-        final Book book = book_list.get(position);
-        manager.textview_title.setText("Title: " + book.getTitle());
-        manager.textview_author.setText("Author: " + book.getAuthor());
-        manager.textview_editorial.setText("Editorial: " + book.getEditorial());
-        manager.textview_price.setText("Price: " + book.getPrice());
-        Picasso.with(context).load("http://192.168.100.51:80"+book.getUrl_image()).placeholder(R.mipmap.ic_launcher_round).into(manager.imageview_image);
-
-        manager.layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //pa la descripcion
-            }
-        });
-    }
 
     @Override
     public int getItemCount() {
         return book_list.size();
     }
 
+    public class BookViewHolder extends RecyclerView.ViewHolder {
+        TextView title,author,category,editorial,description,price;
+        ImageView image;
+        public BookViewHolder (View itemView) {
+            super(itemView);
+            title = itemView.findViewById(R.id.textViewTitle);
+            author = itemView.findViewById(R.id.textViewAuthor);
+            category = itemView.findViewById(R.id.textViewCategory);
+            editorial = itemView.findViewById(R.id.textViewEditorial);
+            description = itemView.findViewById(R.id.textViewDescription);
+            price = itemView.findViewById(R.id.textViewPrice);
+            image = itemView.findViewById(R.id.imageView);
+        }
+    }
 }

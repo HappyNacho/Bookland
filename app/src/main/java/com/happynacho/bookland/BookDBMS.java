@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class BookDBMS extends SQLiteOpenHelper {
 
-    private static final String DB_FILE = "id13441212_dbbookssV1";
+    private static final String DB_FILE = "id13441212_dbbookssV3";
     private static final String TABLE = "Books";
     private static final String FIELD_ID_BOOK = "id_book";
     private static final String FIELD_TITLE = "title";
