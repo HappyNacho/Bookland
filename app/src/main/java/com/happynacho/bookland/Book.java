@@ -1,7 +1,7 @@
 package com.happynacho.bookland;
 
 public class Book {
-
+    String id_book;
     String title;
     String author;
     String category;
@@ -14,7 +14,8 @@ public class Book {
 
     }
 
-    public Book(String title, String author, String category, String editorial, String description, String price, String url_image) {
+    public Book(String id_book,String title, String author, String category, String editorial, String description, String price, String url_image) {
+        this.id_book = id_book;
         this.title = title;
         this.author = author;
         this.category = category;
@@ -24,6 +25,7 @@ public class Book {
         this.url_image = url_image;
     }
 
+    public void setId(String id) { this.id_book = id; }
 
     public void setTitle(String title) {
         this.title = title;
@@ -53,6 +55,7 @@ public class Book {
         this.url_image = url_image;
     }
 
+    public String getId() { return id_book; }
 
     public String getTitle() {
         return title;
